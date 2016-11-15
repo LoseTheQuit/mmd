@@ -1,0 +1,198 @@
+<link rel="stylesheet" href="../css/inject.css">
+
+<div class="bodyOverlay">
+
+
+
+    <div class="container">
+
+
+        <div class="col-xl-2  col-lg-12 col-md-12" class="navbar navbar-inverse">
+            <div data-spy="affix">
+
+
+                <div>
+
+                    <h3 class="robotoh3">View this project on </h3>
+                    <h1><a href="https://github.com/LoseTheQuit/EATurner" target="_blank">GitHub</a></h1>
+                </div>
+                <input placeholder="search by title" type="text" class="form-control" ng-model-options='{ debounce: 250 }' class="inputBox" ng-model="titleSearchQuery" ng-change="turnerTitleSearch()">
+            </div>
+        </div>
+
+        <!-- <nav class="col-lg-3">
+                    <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+                        <li class="active"><a href="#section1">Section 1</a></li>
+                        <li><a href="#section2">Section 2</a></li>
+                        <li><a href="#section3">Section 3</a></li>
+                    </ul>
+                </nav>
+        -->
+
+        <div class="col-xl-10 col-lg-12 col-md-12">
+            <div class="card-deck-wrapper">
+                <div class="card-deck">
+                    <div class="card-columns">
+
+                        <div ng-repeat="event in movieData.data | orderBy:order">
+
+
+                            <div class="card cardStyle">
+                                <!-- ["Awards", "Genres",
+                                            "OtherNames", "Participants", "ReleaseYear",
+                                            "Storylines", "TitleId",
+                                            "TitleName", "TitleNameSortable", "_id"] -->
+                                <!-- {{event}} -->
+                                <!-- cardOverlay1 -->
+                                <div class="cardHeaderSpacing">
+                                    <h1 class="robotoh1">{{ event.TitleName }}</h1>
+                                    <p>Release Year: {{event.ReleaseYear }}</p>
+
+                                </div>
+                                <div class="cardOverlay3 cardStyle theExceptionalP" ng-click="showAwards = ! showAwards">
+                                    <h2 class="robotoh2">Awards</h2>
+                                    <div class="card cardOverRide" ng-repeat="award in event.Awards | orderBy:order" class="card-block" ng-show="showAwards" ng-if="award.AwardWon !== false">
+                                        <p>Year: {{award.AwardYear}}</p>
+                                        <p>Participants: {{award.Participants[0]}}</p>
+                                        <p>Award: {{award.Award}}</p>
+                                        <!-- <p>{{award.AwardWon}} </p> -->
+                                        <!-- <div class="theDividingLine"> </div> -->
+                                    </div>
+
+                                </div>
+
+                                <div class="cardOverlay4 cardStyle theOtherExceptionalP" ng-click="showGenres = ! showGenres">
+                                    <h2 class="robotoh2">Genres</h2>
+                                    <div ng-show="showGenres">
+                                        <div class="card cardOverRide" ng-repeat="genre in event.Genres | orderBy:order">
+                                            <p>{{genre}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- { "IsKey": false, "RoleType": "Advisor", "IsOnScreen": false, "ParticipantType": "Person", "Name": "Miroslav Halik", "ParticipantId": 1002635 } -->
+
+                                <div class="cardOverlay5 cardStyle theExceptionalP" ng-click="showParticipants = ! showParticipants">
+                                    <h2 class="robotoh2">Participants</h2>
+                                    <div ng-show="showParticipants">
+                                        <div class="card cardOverRide" ng-repeat="actor in event.Participants | orderBy:order">
+                                            <p class="robotoHeader">Participant #{{$index}}:</p>
+                                            <!-- <p>{{actor   }}</p> -->
+                                            <p>Role: {{actor.RoleType }}</p>
+                                            <p>Type {{actor.ParticipantType }}</p>
+                                            <!-- <p>{{actor.IsKey   }}</p> -->
+                                            <p>On Screen: {{actor.IsOnScreen }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cardOverlay6 cardStyle theOtherExceptionalP" ng-click="showDetails = ! showDetails">
+                                    <h2 class="robotoh2">Storylines</h2>
+                                    <div ng-show="showDetails">
+                                        <div class="card cardOverRide" ng-repeat="story in event.Storylines | orderBy:order">
+                                            <p class="robotoHeader">Description #{{$index}}:</p>
+                                            <p>{{story.Description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cardOverlay7 cardStyle theExceptionalP" ng-click="showOtherNames = ! showOtherNames">
+                                    <h1 class="robotoh2">Alternate Titles</h1>
+                                    <div ng-show="showOtherNames">
+                                        <div class="card cardOverRide" ng-repeat="oNames in event.OtherNames | orderBy:order">
+                                            <p class="robotoHeader">Alternate Title #{{$index}}:</p>
+                                            <p>Title: {{oNames.TitleName}}</p>
+                                            <p>Language: {{oNames.TitleNameLanguage}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="cardOverlay1">
+                                                <h2>TitleId</h2>
+                                                <p>{{event.TitleId   }}</p>
+                                            </div> -->
+
+                                <!-- <div class="cardOverlay1">
+                                                <h2>TitleNameSortable</h2>
+                                                <p>{{event.TitleNameSortable   }}</p>
+                                                <div class="container">
+                                                    <div class="col-md-12">
+
+                                                        <h1>homebrew</h1>
+                                                        <!-- <button class="btn btn-primary" ng-click="addCustom()">Custom Add</button> -->
+                                                        <button class="btn btn-primary" ng-click="deleteAll()">Delete All</button>
+                                                        <!-- <input ng-model="input"> -->
+
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <h3>Total Amount:</h3>
+                                                        <p>{{totalAmountOfItemsInThisColletection}}</p>
+                                                    </div>
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>lat</th>
+                                                                <th>long</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input class="form-control" ng-model="coord.lat">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="form-control" ng-model="coord.long">
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-primary" ng-click="add()">
+                                                                        Add
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-info" ng-click="update()">
+                                                                        Update
+                                                                    </button>
+                                                                    &nbsp; &nbsp;
+                                                                    <button class="btn btn-info" ng-click="deselect()">
+                                                                        Clear
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr ng-repeat="coord in gps.data">
+                                                                <td>{{coord.lat}}</td>
+                                                                <td>{{coord.long}}</td>
+                                                                <td>
+                                                                    <button class="btn btn-danger" ng-click="remove(coord._id)">Remove</button>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-warning" ng-click="edit(coord._id)">Edit</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                        </div> -->
+
+                                <!-- <div class="cardOverlay1">
+                                                <h2>_id</h2>
+                                                <p>{{event._id   }}</p>
+                                            </div> -->
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
