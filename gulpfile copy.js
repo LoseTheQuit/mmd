@@ -114,7 +114,7 @@ gulp.task('concatAngular', function() {
         .pipe(gulp.dest('public/dist/js/ng'));
 });
 
-gulp.task('uglifyAngular', ['concatAngular'], function() {
+gulp.task('uglify-scripts', ['concatAngular'], function() {
     gulp.src('public/dist/js/ng/init.js')
         .pipe(uglify())
         .pipe(rename('init.min.js'))
@@ -137,7 +137,7 @@ gulp.task('compileSass', function() {
 
 gulp.task('default', ['clean'], function() {
     // gulp.start('paths');
-    gulp.start('uglifyAngular');
+    gulp.start('uglify-scripts');
     gulp.start('compileSass');
     // gulp.start('scripts');
     // gulp.start('imagemin');

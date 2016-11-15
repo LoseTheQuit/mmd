@@ -12,21 +12,24 @@
 }
 
 .card {
-    transition: all linear .5s;
+        width: 100%;
+
+    transition: all linear .25s;
     padding: 50px;
-    border: 1px solid rgba(255, 255, 255, 1);
     box-shadow: 0 10px 10px rgba(0, 0, 0, .25);
     display: inline-block;
     flex-direction: column;
     background: rgba(0, 107, 148, .25);
     border-radius: 0px;
+    border: 5px solid hsla(0, 0%, 100%, .5);
+    background-clip: padding-box;
 }
 
 .card:hover {
-    transition: all linear .5s;
+    transition: all linear .25s;
     border: 1px solid rgba(255, 255, 255, .75);
-    background: rgba(0, 107, 148, .30);
     box-shadow: 0 7px 1px rgba(0, 0, 0, .25);
+    border: 5.5px solid hsla(0, 0%, 100%, .60);
 }
 
 .card-overlay {
@@ -97,4 +100,4 @@
 
 .fixedPosition {
     position: fixed;
-} 
+}

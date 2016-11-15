@@ -10,7 +10,8 @@
         <div class="col-md-12">
             <h2 class="robotoh2">When they go right, we go left!</h2>
             <h1 class="jumbo_text">#calexit</h1>
-            <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)"/>
+
+            <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)" />
             <button class="btn btn-primary del hide" ng-click="deleteAll()">
                 Del
             </button>
@@ -77,18 +78,50 @@
             </div>
         </div>
 
+        <!--<div class="col-md-12">
+            <div class="card">
+                <h1>#1</h1>
+                <div class="col-md-12">
+                    <div class="callout">Transluecent Border</div>
+                    <div class="redBox redBox-translucent">HELLO THERE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card inner-rounding">
+                <div class="">
+                    <h1>#4</h1>
+                    <p> I have a nice subtle inner rounding!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="">
+                    <h1>#10</h1>
+                    <div class="skew-button">
+                        <div>
+                            skew-button
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
         <div class="stats_container">
 
             <div class="col-md-12">
                 <div class="col-xs-12">
-                    <h1 class="robotoh1">Total Votes:
-                        {{totalAmountOfItemsInThisColletection}}</h1>
+                    <h1 class="robotoh1">Total Votes: {{totalAmountOfItemsInThisColletection}}
+                    </h1>
                 </div>
                 <div class="col-xs-12">
-                    <p>for:
-                        {{totalYES}}</p>
-                    <p>against:
-                        {{totalNO}}</p>
+                    <p>for: {{totalYES}}
+                    </p>
+                    <p>against: {{totalNO}}
+                    </p>
 
                 </div>
             </div>

@@ -62,6 +62,7 @@
     "gulp-sourcemaps": "^2.2.0",
     "isarray": "^2.0.1",
     "object-assign": "^4.1.0",
-    "pump": "^1.0.1"
+    "pump": "^1.0.1",
+    "run-sequence": "^1.2.2"
   }
 }
