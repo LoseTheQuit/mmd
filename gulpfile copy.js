@@ -44,7 +44,7 @@ gulp.task('paths', function() {
 });
 
 gulp.task('watch', function() {
-      gulp.start('sass:watch');
+    gulp.start('sass:watch');
 });
 
 gulp.task('sass', function() {
