@@ -3,10 +3,7 @@
 console.log("OUTSIDE: alloy Controller");
 app.controller('alloyController', function($scope, $http, alloyService, lodash) {
     console.log("INSIDE: alloy Controller");
-
-    $scope.ballotBoxFilter = [];
     $scope.ballotBox = [];
-
     $scope.borderPatrol = function() {
         $scope.totalNO = 0;
         $scope.totalYES = 0;
@@ -44,11 +41,15 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         });
         $scope.refresh();
     }
+    $scope.TESTTTA = function() {
+        window.scroll({ top: 2500, left: 0, behavior: 'smooth' });
+
+    }
 
 
     $scope.refresh = function() {
 
-        $scope.ballotBoxFilter = [];
+        $scope.ballotBox = [];
 
         alloyService.getVotes(function(response) {
             $scope.totalYES = 0;
@@ -56,7 +57,9 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
             console.log("____________________");
             $scope.votes = response;
             _.forEach(response.data).filter((vote) => {
-                $scope.ballotBoxFilter.push({
+                $scope.ballotBox = [];
+
+                $scope.ballotBox.push({
                     data: {
                         state: vote.location,
                         ip: vote.data.ip,
@@ -65,7 +68,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
                     }
                 })
 
-                if (vote.data.yes === 1) {
+                if (vote.data.yes == 1) {
                     $scope.totalYES++;
                 } else {
                     $scope.totalNO++;
@@ -73,30 +76,32 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
             })
 
-            $scope.ballotBoxFilter = _.groupBy($scope.ballotBoxFilter, _.property('data.state'));
+            $scope.ballotBox = _.groupBy(response.data, _.property('location'));
 
-            // $scope.merged = [].concat.apply([], $scope.ballotBoxFilter);
+            // $scope.merged = [].concat.apply([], $scope.ballotBox);
             // console.log($scope.merged);
 
-            // console.log($scope.ballotBoxFilter);
+            // console.log($scope.ballotBox);
 
+            $scope.ballotBoxFINAL = [];
 
             var scopeVote_yes = 0;
             var scopeVote_no = 0;
 
-            Object.keys($scope.ballotBoxFilter).forEach(function(key, index, error) {
+            Object.keys($scope.ballotBox).forEach(function(key, index, error) {
 
                 // console.log(key);
-                // console.log($scope.ballotBoxFilter[key]);
+                // console.log($scope.ballotBox[key]);
 
-                Object.keys($scope.ballotBoxFilter[key]).forEach(function(theyKEY, index, error) {
+                Object.keys($scope.ballotBox[key]).forEach(function(theyKEY, index, error) {
 
+                    // console.log($scope.ballotBox[key][theyKEY].data.state);
                     if (theyKEY == 0) {
                         scopeVote_yes = 0;
                         scopeVote_no = 0;
                     }
 
-                    if ($scope.ballotBoxFilter[key][theyKEY].data.yes === 1) {
+                    if ($scope.ballotBox[key][theyKEY].data.yes === 1) {
                         scopeVote_yes++;
                     } else {
                         scopeVote_no++
@@ -104,7 +109,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
                 });
 
-                $scope.ballotBox.push({
+                $scope.ballotBoxFINAL.push({
                     data: {
                         state: key,
                         yes: scopeVote_yes,
@@ -114,7 +119,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
             });
 
-            console.log($scope.ballotBox);
+            console.log($scope.ballotBoxFINAL);
 
 
 
@@ -132,7 +137,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
             //     )
             // };
 
-            // $scope.ballotBoxFilterCOOK = _.reduce($scope.ballotBoxFilterCOOK, function(sum, n, index) {
+            // $scope.ballotBoxCOOK = _.reduce($scope.ballotBoxCOOK, function(sum, n, index) {
             //     console.log(n);
             //     Object.keys(n).forEach(function(key, index, error) {
             //         console.log("KEY: " + index);
@@ -143,8 +148,8 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
             //     // return sum + n;
             // }, 0);
 
-            // console.log($scope.ballotBoxFilterCOOK);
-            // console.log(JSON.stringify($scope.ballotBoxFilterV3, null, 1));
+            // console.log($scope.ballotBoxCOOK);
+            // console.log(JSON.stringify($scope.ballotBoxV3, null, 1));
 
             // TELL HER TO CLEAN HER FACE
             // TELL HER TO CLEAN HER FACE
@@ -168,7 +173,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
             //             })
             //             .map((line) => {
 
-            //                 $scope.ballotBox.push({
+            //                 $scope.ballotBoxFINAL.push({
             //                     state: line.location,
             //                     totalYes: $scope.scopeTotalYes,
             //                     totalNo: $scope.scopeTotalNo,
@@ -182,16 +187,17 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
             //         // console.log(dDouble.length)
 
-            //         $scope.ballotBoxFilter.push($scope.makeUniqArr(dDouble));
+            //         $scope.ballotBox.push($scope.makeUniqArr(dDouble));
 
             //     }
             //     // console.log($scope.makeUniqArr(dDouble));
             //     // console.log(x);
             // }
 
-            // console.log("_________$scope.ballotBoxFilter_________")
+            // console.log("_________$scope.ballotBox_________")
 
             // debugger;
+
         });
 
     }
@@ -620,6 +626,8 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         "abbreviation": "CA"
     }];
 
+    $scope.ignitionSwitch = false;
+
     setTimeout(function() {
 
         setInterval(function() {
@@ -654,22 +662,32 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
                 }
             }
 
-            // if ($scope.totalAmountOfItemsInThisColletection <= 999999999) {
-            //     $scope.customAdd($scope.userVOTE);
-            //     console.log("DONE");
 
-            // } else {
-            //     $scope.deleteAll();
-            //     $scope.customAdd($scope.userVOTE);
-            // }
+            if ($scope.ignitionSwitch) {
 
-            // JACKPOT
-            $scope.collectionPlate();
-            // JACKPOT
+                $scope.ignitionCounter = 500;
+                if ($scope.totalAmountOfItemsInThisColletection <= 999999999) {
+                    $scope.customAdd($scope.userVOTE);
+
+                } else {
+                    $scope.deleteAll();
+                    $scope.customAdd($scope.userVOTE);
+                }
+
+            } else {
+
+                // JACKPOT
+                $scope.ignitionCounter = 10000;
+                $scope.collectionPlate();
+                // JACKPOT
+            }
+
+
+
 
         }, 10000);
 
-    }, 300);
+    }, 500);
 
     $scope.customAdd = function(userVote) {
         alloyService.postQuestionOne($scope.userVOTE, function(response) {
@@ -678,41 +696,18 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         })
     }
 
-    $scope.addVote = function(x) {
-
-        $scope.userVOTE = {
-            ip: $scope.userIP,
-            answer: x,
-            location: $scope.statesArr_proxy[75].name
-        }
-
-        console.log($scope.question_1)
-        if ($scope.authenticated) {
-
-            alloyService.postVotes($scope.userVOTE, function(response) {
-                $scope.collectionPlate();
-            })
-
-            angular.element(document.querySelector('.ghost-botton'), function() {
-                this.addClass('animated bounce');
-            })
-
-        } else {
-            alert("You cannot vote twice.")
-        }
-    }
-
     $scope.addVoteFromForm = function(x) {
 
         // check to make sure the form is completely valid
-        console.log($scope.userVOTE)
 
         if ($scope.voteForm.$valid) {
+
+            console.log($scope.question_1)
             console.log('our form is amazing');
             if (x === 'yes') {
                 $scope.userVOTE = {
 
-                    location: $scope.question_1.state,
+                    location: $scope.question_1.name,
                     data: {
                         ip: $scope.userIP,
                         yes: 1,
@@ -722,7 +717,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
             } else {
                 $scope.userVOTE = {
 
-                    location: $scope.question_1.state,
+                    location: $scope.question_1.name,
                     data: {
                         ip: $scope.userIP,
                         yes: 0,
@@ -730,10 +725,10 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
                     }
                 }
             }
+            console.log($scope.userVOTE)
+
 
             if ($scope.authenticated) {
-
-
                 alloyService.postQuestionOne($scope.userVOTE, function(response) {
                     $scope.collectionPlate();
                 })
@@ -913,5 +908,30 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
     //     });
     //     $scope.refresh();
     // }
+
+    // $scope.addVote = function(x) {
+
+    //     $scope.userVOTE = {
+    //         ip: $scope.userIP,
+    //         answer: x,
+    //         location: $scope.statesArr_proxy[75].name
+    //     }
+
+    //     console.log($scope.question_1)
+    //     if ($scope.authenticated) {
+
+    //         alloyService.postVotes($scope.userVOTE, function(response) {
+    //             $scope.collectionPlate();
+    //         })
+
+    //         angular.element(document.querySelector('.ghost-botton'), function() {
+    //             this.addClass('animated bounce');
+    //         })
+
+    //     } else {
+    //         alert("You cannot vote twice.")
+    //     }
+    // }
+
 
 });

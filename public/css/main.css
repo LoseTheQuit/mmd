@@ -14,8 +14,9 @@
   display: block;
   background-image: url("https://cdn3.vox-cdn.com/uploads/chorus_asset/file/4387649/Golden-Gate-Bridge_-San-Francisco_-CA.-Creative-Commons-by-Thomas-Hawk..0.jpg");
   width: 100%;
-  height: 100%;
-  background-size: cover; }
+  height: 100vh;
+  /*background-size: cover;*/
+  background-position: 100% 50%; }
 
 .bodyWrapper {
   position: relative;
@@ -83,6 +84,16 @@
   background-image: url("https://cdn3.vox-cdn.com/uploads/chorus_asset/file/4387649/Golden-Gate-Bridge_-San-Francisco_-CA.-Creative-Commons-by-Thomas-Hawk..0.jpg");
   background-size: cover; }
 
+/*.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    filter: blur(20px);
+    background: rgba(0, 0, 0, .25);
+}*/
 .card {
   width: 100%;
   transition: all linear .25s;
@@ -90,7 +101,8 @@
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
   display: inline-block;
   flex-direction: column;
-  background: rgba(0, 107, 148, 0.25);
+  background: rgba(0, 107, 148, 0.1);
+  /*background: rgba(0, 107, 148, .05);*/
   border-radius: 0px;
   border: 5px solid rgba(255, 255, 255, 0.5);
   background-clip: padding-box; }
@@ -126,9 +138,15 @@
   flex-direction: row;
   align-content: center; }
 
+.scroll-top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center; }
+
 .poll-response {
   display: flex;
-  /*flex-direction: column;*/
+  flex-direction: column;
   flex-wrap: wrap; }
 
 .poll-question {
@@ -136,7 +154,7 @@
   font-size: 34px; }
 
 .stats_container {
-  display: inline-block;
+  /*display: inline-block;*/
   margin: 50px 0px 250px; }
 
 .hide {
@@ -150,6 +168,18 @@
   /*color: #fff;*/
   /*position: relative;*/ }
 
+.full-page-container {
+  width: 100%;
+  height: 100vh;
+  /*display: flex;*/
+  /*flex-direction: column;*/ }
+
+.screen-1 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center; }
+
 @media only screen and (max-width: 480px) {
   .jumbo_text {
     font-size: 82px;
@@ -162,6 +192,32 @@
 
 .fixedPosition {
   position: fixed; }
+
+.btn-group[disabled],
+.btn.disabled,
+.btn:disabled,
+.btn[disabled] {
+  color: rgba(255, 255, 255, 0.25); }
+
+.footer {
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center; }
+
+.footer a:link,
+.footer a:hover,
+.footer a::active,
+.footer a::focus {
+  color: white; }
+
+.footerContent {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  float: right; }
 
 .callout {
   position: relative; }

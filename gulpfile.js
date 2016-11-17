@@ -17,8 +17,8 @@ var runSequence = require('run-sequence');
 
 gulp.task('watch-sass', function() {
     console.log('GULP WATCH');
-    gulp.watch('public/sass/**/*', ['minifyCss']);
-    gulp.start('clean');
+    gulp.watch('public/sass/**/*', ['minifyCssWATCH']);
+    // gulp.start('clean');
     // gulp.watch('public/**/*', ['default']);
 });
 
@@ -72,7 +72,23 @@ gulp.task('compileSass', function() {
         .pipe(gulp.dest('public/css'))
 });
 
+
 gulp.task('minifyCss', ['compileSass'], function() {
+    gulp.src('public/**/*.css')
+        .pipe(cssmin())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('compileSassWATCH', ['clean'], function() {
+    gulp.src('public/sass/**/*')
+        .pipe(maps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(maps.write('./'))
+        .pipe(gulp.dest('public/css'))
+});
+
+gulp.task('minifyCssWATCH', ['compileSassWATCH'], function() {
     gulp.src('public/**/*.css')
         .pipe(cssmin())
         .pipe(rename({ suffix: '.min' }))

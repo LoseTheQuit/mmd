@@ -2,23 +2,9 @@
 
     <!-- bodyOverlay -->
     <div class="container">
-
         <div class="navWrapper">
             <span class="hamburger-menu" ng-click="openNav()">&#9776;</span>
         </div>
-
-        <div class="col-md-12">
-            <h2 class="robotoh2">When they go right, we go left!</h2>
-            <h1 class="jumbo_text">#calexit</h1>
-
-            <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)" />
-            <button class="btn btn-primary del hide" ng-click="deleteAll()">
-<!--del hide -->
-                Del
-            </button>
-
-        </div>
-
         <div class="navWrapper">
             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
@@ -35,44 +21,74 @@
             </div>
         </div>
 
-        <a href="#vote" id="vote"></a>
+        <!--<p class="footerContent">alpha 1.1.0</p>-->
 
-        <div class="col-md-12">
-            <div class="card">
+        <div class="full-page-container screen-1">
+
+
+
+            <div class="col-md-12">
+                <h2 class="robotoh2">When they go right, we go left!</h2>
+                <h1 class="jumbo_text">#calexit</h1>
+
+                <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)" />
+                <button class="btn btn-primary del hide" ng-click="deleteAll()">
+<!--del hide -->
+                Del
+            </button>
+                <div class="footer">
+                    <!--<div class="scroll-top-container">-->
+                    <a class="ghost-botton ghost-botton--scroll" href="#stats_container" class="footer_link" ng-click="TESTTTA()">
+                        <!--&#9660;-->
+                        V
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="full-page-container screen-2" id="screen-2">
+            <div class="col-md-12">
+
 
                 <div class="col-md-8">
                     <p class="poll-question">Would you allow California to secede from the Union?</p>
                 </div>
 
+
                 <div class="col-md-4 poll-response display_flex">
-                    <form name="voteForm" ng-submit="submitForm()" novalidate>
 
-                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
+                    <div class="card">
 
-                            <!--<select class="ghost-botton" ng-model="question_1.state" required ng-options="state.name as state.abbreviation for state in statesArr">
+                        <form name="voteForm" ng-submit="submitForm()" novalidate>
+
+                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
+
+                                <!--<select class="ghost-botton" ng-model="question_1" required ng-options="state.name as state.abbreviation for state in statesArr">
                                 <option value="" disabled selected style="display: none;">Select State</option>
                     </select>-->
-                            <center>
-                                <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1.state" required ng-options="state.name for state in statesArr">
+                                <div class="display_flex flex-item-center">
+                                    <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1" required ng-options="state.name for state in statesArr">
                               <div class="display_flex flex-item-center">
 
-                                    <option value=""  class="text-center" disabled selected style="display: none;">Select State</option>
+                                    <option value=""  class="text-center" disabled selected >Select State</option>
                               </div>
                         </select>
-                            </center>
+                                </div>
+                            </div>
 
-                        </div>
-                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
-                            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
-                            <!--ng-click="addVote('yes')"-->
+                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
+                                <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
+                            </div>
+                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
+                                <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
+                            </div>
 
-                        </div>
-                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
-                            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
-                            <!--ng-click="addVote('no')"-->
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,37 +125,41 @@
             </div>
         </div>-->
 
-        <div class="stats_container">
+        <div class="col-md-12">
+            <div class="full-page-containerv">
 
-            <div class="col-md-12">
-                <div class="col-md-12">
-                    <h1 class="robotoh1">Total Votes: {{totalAmountOfItemsInThisColletection}}
-                    </h1>
-                </div>
-                <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                    <p>for: {{totalYES}}
-                    </p>
-                </div>
-                <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                    <p>against: {{totalNO}}
-                    </p>
-                </div>
-            </div>
+                <div class="stats_container" id="stats_container">
 
-
-            <div class="col-md-12">
-                <div class="col-md-12" ng-repeat="vote in ballotBox">
-                    <div class="col-md-6 col-xs-6">
-                        <p>{{vote.data.state}}</p>
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <h1 class="robotoh1">Total Votes: {{totalAmountOfItemsInThisColletection}}
+                            </h1>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
+                            <p>for: {{totalYES}}
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
+                            <p>against: {{totalNO}}
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-md-3 col-xs-3">
-                        <p>{{vote.data.yes}}</p>
-                    </div>
-                    <div class="col-md-3 col-xs-3">
-                        <p>{{vote.data.no}}</p>
+
+                    <div class="col-md-12">
+                        <div class="col-md-12" ng-repeat="vote in ballotBoxFINAL">
+                            <div class="col-md-6 col-xs-6">
+                                <p>{{vote.data.state}}</p>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                <p>{{vote.data.yes}}</p>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                <p>{{vote.data.no}}</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
 
