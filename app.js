@@ -130,6 +130,31 @@ app.get('/calexit', function(req, res) {
 
 });
 
+app.post('/calexit-question-1', function(req, res) {
+
+    console.log('\n');
+    console.log('******* INCOMING POST REQUEST - calexit-question-1 *******'.black.bgWhite);
+    console.log('******* INCOMING POST REQUEST - calexit-question-1 *******'.black.bgWhite);
+    console.log('******* INCOMING POST REQUEST - calexit-question-1 *******'.black.bgWhite);
+    console.log('******* INCOMING POST REQUEST - calexit-question-1 *******'.black.bgWhite);
+    console.log('******* INCOMING POST REQUEST - calexit-question-1 *******'.black.bgWhite);
+    console.log('\n');
+    // console.log(req.body); //
+    console.log('\n');
+    // db.calexit.update({ location: req.body.location }, { $inc: { 'yes': 1 } },
+    //     function(err, docs) {
+    //         console.log(docs)
+    //         res.json(docs)
+
+    //     });
+    db.calexit.insert(req.body, function(err, docs) {
+
+        console.log(docs)
+        res.json(docs)
+
+    });
+});
+
 app.post('/calexit', function(req, res) {
 
     console.log('\n');

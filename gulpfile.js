@@ -17,18 +17,17 @@ var runSequence = require('run-sequence');
 
 gulp.task('watch-sass', function() {
     console.log('GULP WATCH');
-
     gulp.watch('public/sass/**/*', ['minifyCss']);
     gulp.start('clean');
     // gulp.watch('public/**/*', ['default']);
 });
 
-gulp.task('watch', function() {
-    console.log('GULP WATCH');
-    gulp.watch('public/js/**/*', ['clean', 'uglify-scripts', 'minifyCss']);
-    gulp.watch('public/sass/**/*', ['clean', 'uglify-scripts', 'minifyCss']);
-    // gulp.watch('public/**/*', ['default']);
-});
+// gulp.task('watch', function() {
+//     console.log('GULP WATCH');
+//     gulp.watch('public/js/**/*', ['clean', 'uglify-scripts', 'minifyCss']);
+//     gulp.watch('public/sass/**/*', ['clean', 'uglify-scripts', 'minifyCss']);
+//     // gulp.watch('public/**/*', ['default']);
+// });
 
 // gulp.task('watch', function() {
 //     console.log('GULP WATCH');

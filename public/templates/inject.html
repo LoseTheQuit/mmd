@@ -13,6 +13,7 @@
 
             <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)" />
             <button class="btn btn-primary del hide" ng-click="deleteAll()">
+<!--del hide -->
                 Del
             </button>
 
@@ -44,36 +45,34 @@
                 </div>
 
                 <div class="col-md-4 poll-response display_flex">
+                    <form name="voteForm" ng-submit="submitForm()" novalidate>
 
-                    <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
-                        <div class="btn-group ghost-botton">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">State</button>
+                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
 
-                            <div class="dropdown-menu" id="this" ng-click="fixedPosition()">
-                                <div class="" ng-repeat="state in statesArr">
-                                    <a class="dropdown-item" href="#">{{state.name}}
-                                    </a>
+                            <!--<select class="ghost-botton" ng-model="question_1.state" required ng-options="state.name as state.abbreviation for state in statesArr">
+                                <option value="" disabled selected style="display: none;">Select State</option>
+                    </select>-->
+                            <center>
+                                <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1.state" required ng-options="state.name for state in statesArr">
+                              <div class="display_flex flex-item-center">
 
-                                    <div class="dropdown-divider"></div>
+                                    <option value=""  class="text-center" disabled selected style="display: none;">Select State</option>
+                              </div>
+                        </select>
+                            </center>
 
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
+                            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
+                            <!--ng-click="addVote('yes')"-->
 
-                    <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
+                        </div>
+                        <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
+                            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
+                            <!--ng-click="addVote('no')"-->
+                        </div>
 
-                        <button class="ghost-botton" ng-click="addVote('yes')">
-                            YES
-                        </button>
-
-                    </div>
-                    <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
-                        <button class="ghost-botton" ng-click="addVote('no')">
-                            NO
-                        </button>
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>
@@ -113,24 +112,37 @@
         <div class="stats_container">
 
             <div class="col-md-12">
-                <div class="col-xs-12">
+                <div class="col-md-12">
                     <h1 class="robotoh1">Total Votes: {{totalAmountOfItemsInThisColletection}}
                     </h1>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
                     <p>for: {{totalYES}}
                     </p>
+                </div>
+                <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
                     <p>against: {{totalNO}}
                     </p>
-
                 </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="col-md-12" ng-repeat="vote in ballotBox">
+                    <div class="col-md-6 col-xs-6">
+                        <p>{{vote.data.state}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <p>{{vote.data.yes}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <p>{{vote.data.no}}</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- <div class="col-md-2" ng-repeat="vote in votes.data">
-            <p>{{vote.answer}}</p>
-            <p>{{vote.location}}</p>
-        </div> -->
 
     </div>
 </div>

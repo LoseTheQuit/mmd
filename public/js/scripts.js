@@ -14,10 +14,10 @@ $(function() {
         }
     });
 
-    $('.ghost-botton').click(function() {
-        window.alert("WHOA");
-        $('.ghost-botton').addClass('animated bounceOutLeft');
-    });
+    // $('.ghost-botton').click(function() {
+    //     window.alert("WHOA");
+    //     $('.ghost-botton').addClass('animated bounceOutLeft');
+    // });
 
     $('a[href*="#"]:not([href="#"])').click(function() {
 
