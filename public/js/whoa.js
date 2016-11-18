@@ -965,7 +965,7 @@ $(function() {
 
 // $scope.refresh = function() {
 
-//         $scope.ballotBox = [];
+//         $scope.ballotBoxFilter = [];
 
 //         alloyService.getVotes(function(response) {
 //             $scope.totalYES = 0;
@@ -973,7 +973,7 @@ $(function() {
 //             console.log("____________________");
 //             $scope.votes = response;
 //             _.forEach(response.data).filter((vote) => {
-//                 $scope.ballotBox.push({
+//                 $scope.ballotBoxFilter.push({
 //                     data: {
 //                         state: vote.location,
 //                         ip: vote.data.ip,
@@ -991,29 +991,29 @@ $(function() {
 //             })
 
 
-//             $scope.ballotBox = _.groupBy($scope.ballotBox, _.property('data.state'));
+//             $scope.ballotBoxFilter = _.groupBy($scope.ballotBoxFilter, _.property('data.state'));
 
-//             // $scope.merged = [].concat.apply([], $scope.ballotBox);
+//             // $scope.merged = [].concat.apply([], $scope.ballotBoxFilter);
 //             // console.log($scope.merged);
 
-//             console.log($scope.ballotBox);
+//             console.log($scope.ballotBoxFilter);
 
-//             $scope.ballotBoxFINAL = [];
+//             $scope.ballotBox = [];
 
 //             var scopeVote_yes = 0;
 //             var scopeVote_no = 0;
 
-//             Object.keys($scope.ballotBox).forEach(function(key, index, error) {
+//             Object.keys($scope.ballotBoxFilter).forEach(function(key, index, error) {
 
 //                 // console.log(key);
-//                 // console.log($scope.ballotBox[key]);
+//                 // console.log($scope.ballotBoxFilter[key]);
 
-//                 Object.keys($scope.ballotBox[key]).forEach(function(theyKEY, index, error) {
+//                 Object.keys($scope.ballotBoxFilter[key]).forEach(function(theyKEY, index, error) {
 
 //                     // console.log("INDEX: " + index);
-//                     // console.log($scope.ballotBox[key][theyKEY]);
+//                     // console.log($scope.ballotBoxFilter[key][theyKEY]);
 
-//                     if ($scope.ballotBox[key][theyKEY].data.yes === 1) {
+//                     if ($scope.ballotBoxFilter[key][theyKEY].data.yes === 1) {
 //                         scopeVote_yes++;
 //                     } else {
 //                         scopeVote_no++
@@ -1021,7 +1021,7 @@ $(function() {
 
 //                 });
 
-//                 $scope.ballotBoxFINAL.push({
+//                 $scope.ballotBox.push({
 //                     data: {
 //                         state: key,
 //                         yes: scopeVote_yes,
@@ -1031,9 +1031,9 @@ $(function() {
 
 //             });
 
-//             console.log($scope.ballotBoxFINAL);
+//             console.log($scope.ballotBox);
 
-//             // $scope.ballotBoxCOOK = _.reduce($scope.ballotBoxCOOK, function(sum, n, index) {
+//             // $scope.ballotBoxFilterCOOK = _.reduce($scope.ballotBoxFilterCOOK, function(sum, n, index) {
 //             //     console.log(n);
 //             //     Object.keys(n).forEach(function(key, index, error) {
 //             //         console.log("KEY: " + index);
@@ -1044,8 +1044,8 @@ $(function() {
 //             //     // return sum + n;
 //             // }, 0);
 
-//             // console.log($scope.ballotBoxCOOK);
-//             // console.log(JSON.stringify($scope.ballotBoxV3, null, 1));
+//             // console.log($scope.ballotBoxFilterCOOK);
+//             // console.log(JSON.stringify($scope.ballotBoxFilterV3, null, 1));
 
 //             // TELL HER TO CLEAN HER FACE
 //             // TELL HER TO CLEAN HER FACE
@@ -1069,7 +1069,7 @@ $(function() {
 //             //             })
 //             //             .map((line) => {
 
-//             //                 $scope.ballotBoxFINAL.push({
+//             //                 $scope.ballotBox.push({
 //             //                     state: line.location,
 //             //                     totalYes: $scope.scopeTotalYes,
 //             //                     totalNo: $scope.scopeTotalNo,
@@ -1083,14 +1083,14 @@ $(function() {
 
 //             //         // console.log(dDouble.length)
 
-//             //         $scope.ballotBox.push($scope.makeUniqArr(dDouble));
+//             //         $scope.ballotBoxFilter.push($scope.makeUniqArr(dDouble));
 
 //             //     }
 //             //     // console.log($scope.makeUniqArr(dDouble));
 //             //     // console.log(x);
 //             // }
 
-//             // console.log("_________$scope.ballotBox_________")
+//             // console.log("_________$scope.ballotBoxFilter_________")
 
 //             // debugger;
 //         });

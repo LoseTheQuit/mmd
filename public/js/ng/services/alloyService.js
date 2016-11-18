@@ -32,12 +32,10 @@ app.service('alloyService', function($http) {
 
     };
 
-
-
-    this.getVoteQuery = function(query, callback) {
+    this.writeToDisk = function(query, callback) {
         console.log("success from getHomeBrew");
 
-        $http({ url: '/omni-query', method: "POST", data: query }).then(callback);
+        $http({ url: '/write', method: "POST", data: query }).then(callback);
 
     };
 

@@ -12,6 +12,7 @@ let fs = require('fs'),
     request = require('request'),
     querystring = require('querystring'),
     cookieParser = require('cookie-parser'),
+    jsonfile = require('jsonfile'),
     Client = require('node-rest-client').Client;
 
 var client = new Client();
@@ -30,12 +31,6 @@ if (ignitionSwitch) {
 }
 
 var db = mongojs(dbConnectionString, ['calexit']);
-var sass = require('node-sass');
-sass.render({
-    file: '/Users/clxxxii/Documents/dev/calexit/public/sass/index.scss',
-}, function(err, result) {
-    console.log(result)
-});
 
 // // OR
 // var result = sass.renderSync({
@@ -84,6 +79,17 @@ app.get('/', function(req, res) {
 
 });
 
+app.get('/ballot-box', function(req, res) {
+
+    console.log('\n');
+    console.log('******* INCOMING GET REQUEST - Load Template *******'.black.bgWhite);
+    console.log('\n');
+
+    var csv = fs.readFileSync('public/mock/data.json');
+    res.end(csv);
+
+});
+
 app.get('/del-all', function(req, res) {
 
     console.log('\n');
@@ -96,6 +102,22 @@ app.get('/del-all', function(req, res) {
         }
         res.json(docs)
     });
+
+});
+
+app.post('/write', function(req, res) {
+
+    console.log('\n');
+    console.log('******* INCOMING db.calexit.count() REQUEST - Load Template *******'.black.bgWhite);
+    console.log('\n');
+
+    console.log("))))))))))))))))))))))))))(((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))")
+    console.log(req.body)
+    console.log("))))))))))))))))))))))))))(((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))")
+
+    jsonfile.writeFileSync(__dirname + '/public/mock/data.json', req.body, { spaces: 2 })
+    res.json(req.body);
+
 
 });
 
@@ -172,19 +194,6 @@ app.post('/calexit', function(req, res) {
 
 });
 
-app.get('/homebrew', function(req, res) {
-
-    console.log('\n');
-    console.log('******* INCOMING GET REQUEST - Load Template *******'.black.bgWhite);
-    console.log('\n');
-
-    db.calexit.find(function(err, docs) {
-        // console.log(docs)
-        res.json(docs)
-
-    })
-
-});
 app.post('/split-query', function(req, res) {
 
     console.log('\n');

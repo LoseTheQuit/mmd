@@ -1,10 +1,11 @@
 <div class="">
 
     <!-- bodyOverlay -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="navWrapper">
             <span class="hamburger-menu" ng-click="openNav()">&#9776;</span>
         </div>
+
         <div class="navWrapper">
             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
@@ -21,47 +22,45 @@
             </div>
         </div>
 
-        <!--<p class="footerContent">alpha 1.1.0</p>-->
 
         <div class="full-page-container screen-1">
 
 
 
             <div class="col-md-12">
-                <h2 class="robotoh2">When they go right, we go left!</h2>
+                <h3 class="robotoh4"><span class="text_red_glaze">When they go right,</span> <span class="text_blue_glaze">we go left!</span></h3>
                 <h1 class="jumbo_text">#calexit</h1>
 
                 <input type="text" class="form-control del hide" ng-model="voteQuery" ng-change="getVoteWithQuery(voteQuery)" />
                 <button class="btn btn-primary del hide" ng-click="deleteAll()">
-<!--del hide -->
-                Del
+                 Del
             </button>
                 <div class="footer">
-                    <!--<div class="scroll-top-container">-->
                     <a class="ghost-botton ghost-botton--scroll" href="#stats_container" class="footer_link" ng-click="TESTTTA()">
                         <!--&#9660;-->
                         V
                     </a>
                 </div>
+
             </div>
-
-
 
         </div>
 
 
-        <div class="full-page-container screen-2" id="screen-2">
-            <div class="col-md-12">
-
+        <!--<div class="full-page-container screen-2" id="screen-2">-->
+        <div id="screen-2">
+            <div class="col-md-12   poll_question_container">
 
                 <div class="col-md-8">
-                    <p class="poll-question">Would you allow California to secede from the Union?</p>
+                    <!--card-->
+                    <h1 class="robotoh2">Would you allow California to secede from the Union?</h1>
                 </div>
 
 
                 <div class="col-md-4 poll-response display_flex">
 
                     <div class="card">
+                        <!--card-->
 
                         <form name="voteForm" ng-submit="submitForm()" novalidate>
 
@@ -125,36 +124,34 @@
             </div>
         </div>-->
 
-        <div class="col-md-12">
-            <div class="full-page-containerv">
 
-                <div class="stats_container" id="stats_container">
+        <div class="col-md-12" id="stats_container">
+            <div class="card">
+
+                <div class="stats_container">
 
                     <div class="col-md-12">
                         <div class="col-md-12">
-                            <h1 class="robotoh1">Total Votes: {{totalAmountOfItemsInThisColletection}}
-                            </h1>
+                            <span class="robotoh1">Total Votes:
+                            </span>
+                            <span class="robotoh2">{{totalAmountOfItemsInThisColletection}}</span>
                         </div>
                         <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                            <p>for: {{totalYES}}
-                            </p>
+                            <p class="robotoh5">for: {{totalYES}}</p>
                         </div>
                         <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                            <p>against: {{totalNO}}
-                            </p>
+                            <p class="robotoh5">against: {{totalNO}}</p>
                         </div>
-                    </div>
 
-                    <div class="col-md-12">
-                        <div class="col-md-12" ng-repeat="vote in ballotBoxFINAL">
-                            <div class="col-md-6 col-xs-6">
-                                <p>{{vote.data.state}}</p>
+                        <div class="col-md-12 card-row-data" ng-repeat="vote in ballotBoxFINAL">
+                            <div class="col-md-6 col-xs-12">
+                                <p class="robotoh4">{{vote.data.state}}</p>
                             </div>
-                            <div class="col-md-3 col-xs-3">
-                                <p>{{vote.data.yes}}</p>
+                            <div class="col-md-3 col-xs-6">
+                                <p class="robotoh5">{{vote.data.yes}}</p>
                             </div>
-                            <div class="col-md-3 col-xs-3">
-                                <p>{{vote.data.no}}</p>
+                            <div class="col-md-3 col-xs-6">
+                                <p class="robotoh5">{{vote.data.no}}</p>
                             </div>
                         </div>
 
@@ -163,6 +160,11 @@
             </div>
         </div>
 
+        <div id="pieChart"></div>
+
+        <!--<div class="svgContainer">
+
+        </div>-->
 
     </div>
 </div>

@@ -32,6 +32,8 @@
     "gulp-util": "^3.0.7",
     "instagram-node": "^0.5.8",
     "jshint": "^2.9.4",
+    "jsonfile": "^2.4.0",
+    "lodash": "^4.17.2",
     "minimatch": "^3.0.3",
     "mongodb": "^2.2.5",
     "mongojs": "^2.4.0",

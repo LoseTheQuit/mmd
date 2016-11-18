@@ -20,13 +20,22 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         });
 
     };
-    $scope.cars = [
-        { name: 'Nissan', guid: '1-9' },
-        { name: 'Toyota', guid: '1-23' },
-        { name: 'Ford', guid: '8-43' },
-        { name: 'Honda', guid: '2-6' },
-        { name: 'Datsun', guid: '1-55' }
-    ];
+    $scope.cars = [{
+        name: 'Nissan',
+        guid: '1-9'
+    }, {
+        name: 'Toyota',
+        guid: '1-23'
+    }, {
+        name: 'Ford',
+        guid: '8-43'
+    }, {
+        name: 'Honda',
+        guid: '2-6'
+    }, {
+        name: 'Datsun',
+        guid: '1-55'
+    }];
     $scope.selectedCar = $scope.cars[1].g
 
     $scope.selectedState = function(x) {
@@ -41,11 +50,12 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         });
         $scope.refresh();
     }
-    $scope.TESTTTA = function() {
-        window.scroll({ top: 2500, left: 0, behavior: 'smooth' });
 
-    }
-
+    $scope.writeballot = function() {
+        alloyService.writeToDisk($scope.ballotBoxFINAL, function(response) {
+            // console.log(response)
+        });
+    };
 
     $scope.refresh = function() {
 
@@ -119,7 +129,16 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
             });
 
-            console.log($scope.ballotBoxFINAL);
+
+
+            // console.log($scope.ballotBox);
+            // console.log("***************** $scope.ballotBox ^^^");
+
+            // console.log($scope.ballotBoxFINAL);
+            // console.log("************ $scope.ballotBoxFINAL ^^^");
+
+            //    $scope.writeballot();
+
 
 
 
@@ -628,66 +647,66 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
 
     $scope.ignitionSwitch = false;
 
-    setTimeout(function() {
+    // setTimeout(function() {
 
-        setInterval(function() {
+    //     setInterval(function() {
 
-            $scope.high = 13;
-            $scope.lo = 0;
-            $scope.randomNum = Math.floor((Math.random() * $scope.high) + $scope.lo);
-            $scope.randomNumV2 = Math.floor((Math.random() * ($scope.statesArr_proxy.length - 1)) + $scope.lo);
+    //         $scope.high = 13;
+    //         $scope.lo = 0;
+    //         $scope.randomNum = Math.floor((Math.random() * $scope.high) + $scope.lo);
+    //         $scope.randomNumV2 = Math.floor((Math.random() * ($scope.statesArr_proxy.length - 1)) + $scope.lo);
 
-            if ($scope.randomNum > 2) {
+    //         if ($scope.randomNum > 2) {
 
-                $scope.userVOTE = {
+    //             $scope.userVOTE = {
 
-                    location: $scope.statesArr_proxy[$scope.randomNumV2].name,
-                    data: {
-                        ip: $scope.userIP,
-                        yes: 1,
-                        no: 0,
-                    }
-                }
+    //                 location: $scope.statesArr_proxy[$scope.randomNumV2].name,
+    //                 data: {
+    //                     ip: $scope.userIP,
+    //                     yes: 1,
+    //                     no: 0,
+    //                 }
+    //             }
 
-            } else {
+    //         } else {
 
-                $scope.userVOTE = {
+    //             $scope.userVOTE = {
 
-                    location: $scope.statesArr_proxy[$scope.randomNumV2].name,
-                    data: {
-                        ip: $scope.userIP,
-                        yes: 0,
-                        no: 1,
-                    }
-                }
-            }
-
-
-            if ($scope.ignitionSwitch) {
-
-                $scope.ignitionCounter = 500;
-                if ($scope.totalAmountOfItemsInThisColletection <= 999999999) {
-                    $scope.customAdd($scope.userVOTE);
-
-                } else {
-                    $scope.deleteAll();
-                    $scope.customAdd($scope.userVOTE);
-                }
-
-            } else {
-
-                // JACKPOT
-                $scope.ignitionCounter = 10000;
-                $scope.collectionPlate();
-                // JACKPOT
-            }
+    //                 location: $scope.statesArr_proxy[$scope.randomNumV2].name,
+    //                 data: {
+    //                     ip: $scope.userIP,
+    //                     yes: 0,
+    //                     no: 1,
+    //                 }
+    //             }
+    //         }
 
 
+    //         if ($scope.ignitionSwitch) {
+
+    //             $scope.ignitionCounter = 500;
+    //             if ($scope.totalAmountOfItemsInThisColletection <= 999999999) {
+    //                 $scope.customAdd($scope.userVOTE);
+
+    //             } else {
+    //                 $scope.deleteAll();
+    //                 $scope.customAdd($scope.userVOTE);
+    //             }
+
+    //         } else {
+
+    //             // JACKPOT
+    //             $scope.ignitionCounter = 10000;
+    //             $scope.collectionPlate();
+    //             // JACKPOT
+    //         }
 
 
-        }, 10000);
 
-    }, 500);
+
+    //     }, 10000);
+
+    // }, 500);
 
     $scope.customAdd = function(userVote) {
         alloyService.postQuestionOne($scope.userVOTE, function(response) {
@@ -900,8 +919,172 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash) 
         "name": "Wyoming",
         "abbreviation": "WY"
     }];
+    d3.select(self.frameElement).style("height", "700px");
+
+
+    d3.json("ballot-box", function(error, data) {
+        if (error) return console.warn(error);
+
+        // console.log(data)
+        // console.log("data ^")
+
+        // var headers;
+        // data.forEach((d) => {
+        //     console.log(d)
+        //     headers = Object.keys(d.location);
+        //     // headers.forEach((header) => {
+
+
+        //     // })
+        // });
+
+
+        // Object.keys(data).forEach(function(key, index, error) {
+
+        //     console.log(key)
+        //         // console.log(index)
+
+
+        // });
+
+        // console.log(headers)
+
+
+        // THIS IS THE CANVAS - BASE STYLE
+        var canvas = d3.select(".svgContainer").append("svg")
+            .attr("width", 720)
+            .attr("height", 1700);
+
+        // THIS IS ADDING DATA TO THE CANVAS
+        canvas.selectAll('rect')
+            .data(data)
+            .enter()
+            .append('rect')
+            .attr('width', (d) => {
+                console.log(d.data)
+                    // console.log(d.location)
+                return d.data.yes * 25;
+
+            })
+            .attr('height', 50)
+            .attr('y', (d, i) => {
+
+                return i * 80;
+            })
+            .attr("fill", "rgba(0, 107, 148, .5)");
+
+
+        canvas.selectAll('text')
+            .data(data)
+            .enter()
+            .append('text')
+            .attr("fill", "#ffffff")
+            .attr('y', (d, i) => {
+                return i * 80 + 25;
+            })
+            .attr('x', 5)
+            .text((d) => {
+                console.log(d)
+                console.log(d.data.state)
+                return d.data.state;
+            });
+
+
+        // visualizeit();
+    });
+
+
+    // var pie = new d3pie("pie", {
+    //     header: {
+    //         title: {
+    //             text: "Another Pie"
+    //         }
+    //     },
+    //     data: {
+    //         content: [
+    //             { label: "One", value: 264131 },
+    //             { label: "Two", value: 218812 },
+    //             { label: "Three", value: 157618 }
+    //         ]
+    //     },
+    //     callbacks: {
+    //         onClickSegment: function(a) {
+    //             alert("Segment clicked! See the console for all data passed to the click handler.");
+    //             console.log(a);
+    //         }
+    //     }
+    // });
+
+    var dataPIE = [];
+
+
+
+    // Get JSON data and wait for the response
+
+    d3.json("ballot-box", function(error, json) {
+
+        $.each(json, function(d, i) {
+
+            dataPIE.push({
+
+                state: d.data.state,
+                yes: d.data.yes,
+                no: d.data.no,
+                value: i
+
+            })
+
+        })
+
+
+
+        var pie = new d3pie("pieChart", {
+
+            "header": {
+
+                "title": {
+
+                    "text": "Traffic Sources",
+
+                    "fontSize": 22,
+
+                    "font": "verdana"
+
+                },
+
+            },
+
+            "size": {
+
+                "canvasHeight": 400,
+
+                "canvasWidth": 590
+
+            },
+
+            "data": {
+
+                "content": dataPIE
+
+            },
+
+            "labels": {
+
+                "outer": {
+
+                    "pieDistance": 32
+
+                }
+
+            }
+
+        });
+
+    });
+
 
     // DEPRECATED
+
 
     // $scope.getVoteSplit = function() {
     //     alloyService.getVoteSplitCount(function(response) {

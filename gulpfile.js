@@ -17,7 +17,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('watch-sass', function() {
     console.log('GULP WATCH');
-    gulp.watch('public/sass/**/*', ['minifyCssWATCH']);
+    gulp.watch(['public/sass/**/*', 'public/js/ng/**/*'], ['minifyCssWATCH', 'concat-scripts']);
     // gulp.start('clean');
     // gulp.watch('public/**/*', ['default']);
 });
@@ -45,7 +45,7 @@ gulp.task('clean', function() {
 
 gulp.task('concat-scripts', function() {
     gulp.src([
-            'public/js/**/*'
+            'public/js/ng/**/*'
         ])
         .pipe(concat('app.js'))
         //this fixed a shorthand javascript error
@@ -79,6 +79,21 @@ gulp.task('minifyCss', ['compileSass'], function() {
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('public/css'));
 });
+
+
+// gulp.task('concat-scriptsWATCH', ['clean'], function() {
+//     gulp.src([
+//             'public/js/**/*'
+//         ])
+//         .pipe(concat('app.js'))
+//         //this fixed a shorthand javascript error
+//         .pipe(babel({
+//             presets: ['es2015'],
+//             compact: true
+//         }))
+//         //this fixed a shorthand javascript error
+//         .pipe(gulp.dest('public/js'));
+// });
 
 gulp.task('compileSassWATCH', ['clean'], function() {
     gulp.src('public/sass/**/*')

@@ -47,7 +47,6 @@ h2 {
     background: -webkit-linear-gradient(top, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
     /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
-   
 }
 
 
@@ -58,28 +57,6 @@ h2 {
 
 
 /*000000000000000*/
-
-.robotoh1 {
-    font-weight: 300;
-    font-size: 67px;
-}
-
-.robotoh2 {
-    font-weight: 300;
-    font-size: 37px;
-    padding-bottom: 30px;
-}
-
-.robotoh3 {
-    font-weight: 300;
-    font-size: 33px;
-    margin-top: 200px;
-}
-
-.robotoHeader {
-    font-weight: 700;
-    font-size: 25x;
-}
 
 
 /**/
@@ -174,27 +151,6 @@ h2 {
     }
 }
 
-@media (max-width: 1200px) {
-    .robotoh1 {
-        font-weight: 300;
-        font-size: 40px;
-    }
-    .robotoh2 {
-        font-weight: 300;
-        font-size: 23px;
-        padding-bottom: 30px;
-    }
-    .robotoh3 {
-        font-weight: 300;
-        font-size: 17px;
-        margin-top: 200px;
-    }
-    .robotoHeader {
-        font-weight: 700;
-        font-size: 25x;
-    }
-}
-
 .theDividingLine {
     display: block;
     height: 3px;
@@ -216,6 +172,3 @@ h2 {
 .theExceptionalP {
     line-height: 10px;
 }
-
-
-/**/
