@@ -135,7 +135,25 @@
     color: rgb(204, 210, 252);
 }
 
+.secretNavWrapper {
+    padding: 20px 0px 100px;
+}
+
 @media screen and (max-width: 768px) {
+    .secretNavWrapper {
+        padding: 0px;
+    }
+    .robotoh1 {
+        font-size: 87px;
+    }
+    .robotoh1 span {
+        text-align: center;
+    }
+    .robotoh2 {
+        font-size: 50px;
+        display: block;
+        text-align: center;
+    }
     .poll-response .card {
         margin-top: 50px;
     }
