@@ -1,10 +1,3 @@
-.jumbo_text {
-    font-size: 182px;
-    margin: 0px 0px 100px;
-    font-weight: lighter;
-}
-
-
 /*.card::before {
     content: "";
     position: absolute;
@@ -86,6 +79,7 @@
     display: flex;
     flex-direction: row;
     align-content: center;
+    min-width: 250px;
 }
 
 .scroll-top-container {
@@ -123,13 +117,6 @@
 .dropdown-menu {
     /*color: #fff;*/
     /*position: relative;*/
-}
-
-.full-page-container {
-    width: 100%;
-    height: 100vh;
-    /*display: flex;*/
-    /*flex-direction: column;*/
 }
 
 .screen-1 {
@@ -212,4 +199,16 @@ canvas {
     .container {
         width: 80%;
     }
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after,
+.hamburger-inner {
+    background: #fff;
+    width: 30px;
+}
+
+.ghost-botton * {
+    display: block;
+    text-align: center;
 }

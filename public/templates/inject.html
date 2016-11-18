@@ -1,9 +1,15 @@
 <div class="">
 
-    <!-- bodyOverlay -->
     <div class="container-fluid">
         <div class="navWrapper">
-            <span class="hamburger-menu" ng-click="openNav()">&#9776;</span>
+            <!--<span class="hamburger-menu" ng-click="openNav()">&#9776;
+                    <span class="hamburger-inner"></span>
+            </span>-->
+            <button class="hamburger hamburger-menu" type="button" ng-click="openNav()">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+            </button>
         </div>
 
         <div class="secretNavWrapper">
@@ -23,9 +29,10 @@
         </div>
 
 
-        <div class="full-page-container screen-1">
 
+        <div class="full-page-container ">
 
+            <!--screen-1-->
 
             <div class="col-md-12">
                 <h3 class="robotoh4"><span class="text_red_glaze">When they go right,</span> <span class="text_blue_glaze">we go left!</span></h3>
@@ -47,50 +54,67 @@
         </div>
 
 
-        <!--<div class="full-page-container screen-2" id="screen-2">-->
-        <div id="screen-2">
-            <div class="col-md-12   poll_question_container">
 
-                <div class="col-md-8">
-                    <!--card-->
-                    <h1 class="robotoh2">Would you allow California to secede from the Union?</h1>
-                </div>
+        <div class="col-md-12" id="stats_container">
+            <div class="card">
 
+                <div class="stats_container">
 
-                <div class="col-md-4 poll-response display_flex">
+                    <div class="col-md-12 padding_0">
+                        <div class="row">
 
-                    <div class="card">
-                        <!--card-->
+                            <div class="col-md-8 col-xs-push-12">
 
-                        <form name="voteForm" ng-submit="submitForm()" novalidate>
-
-                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
-
-                                <!--<select class="ghost-botton" ng-model="question_1" required ng-options="state.name as state.abbreviation for state in statesArr">
-                                <option value="" disabled selected style="display: none;">Select State</option>
-                    </select>-->
-                                <div class="display_flex flex-item-center">
-                                    <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1" required ng-options="state.name for state in statesArr">
-                              <div class="display_flex flex-item-center">
-
-                                    <option value=""  class="text-center" disabled selected >Select State</option>
-                              </div>
-                        </select>
+                                <h1 class="robotoh1">Total Votes: <span class="robotoh2">{{totalAmountOfItemsInThisColletection}}</span>
+                                </h1>
+                                <div class="col-lg-12 col-md-6 col-xs-12">
+                                    <!--<span class="robotoh2">{{totalAmountOfItemsInThisColletection}}</span>-->
                                 </div>
                             </div>
-
-                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex  flex-item-center">
-                                <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
+                            <div class="col-md-4 poll-response col-xs-pull-12 padding_0">
+                                <div class="col-md-12 col-sm-12 col-xs-12 display_flex  flex-item-center">
+                                    <button type="submit" class="btn ghost-botton vote-button" id="myBtn">Vote Now</button>
+                                </div>
                             </div>
-                            <div class="col-md-12 col-sm-6 col-xs-12 display_flex flex-item-center">
-                                <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="col-lg-6 col-md-6 col-xs-6">
+                                    <p class="robotoh5">for: {{totalYES}}</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-xs-6">
+                                    <p class="robotoh5">against: {{totalNO}}</p>
+                                </div>
                             </div>
+                            <div class="col-md-6 col-xs-12">
 
-                        </form>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12 card-row-data" ng-repeat="vote in ballotBoxFINAL">
+                            <div class="col-md-6 col-xs-12">
+                                <p class="robotoh4">{{vote.data.state}}</p>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <p class="robotoh5 text_blue_glaze">{{vote.data.yes}}</p>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <p class="robotoh5 text_red_glaze">{{vote.data.no}}</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="pieChart"></div>
+
+        <!--<div class="svgContainer">
+
+        </div>-->
+
+        <!--<div class="full-page-container screen-2" id="screen-2">-->
 
         <!--<div class="col-md-12">
             <div class="card">
@@ -125,46 +149,66 @@
         </div>-->
 
 
-        <div class="col-md-12" id="stats_container">
-            <div class="card">
-
-                <div class="stats_container">
-
-                    <div class="col-md-12">
-                        <div class="col-md-12">
-                            <span class="robotoh1">Total Votes:
-                            </span>
-                            <span class="robotoh2">{{totalAmountOfItemsInThisColletection}}</span>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                            <p class="robotoh5">for: {{totalYES}}</p>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-xs-6 col-xs-6">
-                            <p class="robotoh5">against: {{totalNO}}</p>
-                        </div>
-
-                        <div class="col-md-12 card-row-data" ng-repeat="vote in ballotBoxFINAL">
-                            <div class="col-md-6 col-xs-12">
-                                <p class="robotoh4">{{vote.data.state}}</p>
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <p class="robotoh5">{{vote.data.yes}}</p>
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <p class="robotoh5">{{vote.data.no}}</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="pieChart"></div>
-
-        <!--<div class="svgContainer">
-
-        </div>-->
 
     </div>
 </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form name="voteForm" ng-submit="submitForm()" novalidate>
+            <span class="close close-x">x</span>
+            <p>CAST YOUR VOTE!</p>
+            <div class="col-md-12 col-sm-12 col-xs-12 display_flex flex-item-center flex-direction-column padding_0">
+                <div class="col-md-12 col-sm-6 col-xs-6 display_flex flex-item-center padding_0">
+                    <h1 class="robotoh7">Would you allow California to secede from the Union?</h1>
+                </div>
+                <div class="col-md-12 col-sm-6 col-xs-6 display_flex flex-item-center">
+
+
+                    <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1" required ng-options="state.name for state in statesArr">
+                                                        <option value=""  class="text-center" disabled selected >Select State</option>
+                                                  </select>
+
+
+                </div>
+
+                <div class="col-md-12 col-sm-6 col-xs-6 display_flex  flex-item-center">
+                    <button type="submit" class="btn ghost-botton ghost-btn" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
+                    <button type="submit" class="btn ghost-botton ghost-btn" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<!-- The Modal -->
+
+<!--<form name="voteForm" ng-submit="submitForm()" novalidate>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 display_flex flex-item-center flex-direction-column poll_container padding_0">
+
+        <div class="col-md-12 col-sm-6 col-xs-6 display_flex flex-item-center padding_0">
+            <h1 class="robotoh7">Would you allow California to secede from the Union?</h1>
+        </div>
+
+        <div class="col-md-12 col-sm-6 col-xs-6 display_flex flex-item-center">
+
+
+            <select class="ghost-botton ghost-botton--state-select display_flex flex-item-center" ng-model="question_1" required ng-options="state.name for state in statesArr">
+                        <option value=""  class="text-center" disabled selected >Select State</option>
+                    </select>
+
+
+        </div>
+
+        <div class="col-md-12 col-sm-6 col-xs-6 display_flex  flex-item-center">
+            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('yes')">Yes</button>
+            <button type="submit" class="btn ghost-botton" ng-disabled="voteForm.$invalid" ng-click="addVoteFromForm('no')">No</button>
+        </div>
+
+    </div>
+
+</form>-->

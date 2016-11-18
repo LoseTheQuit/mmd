@@ -191,6 +191,19 @@ d3.json("ballot-box",function(error,json){$.each(json,function(d,i){dataPIE.push
 //         alert("You cannot vote twice.")
 //     }
 // }
-});'use strict';console.log("OUTSIDE: alloy Directive");angular.module("main").directive('inject',function(){console.log("INSIDE: alloy Directive");return{templateUrl:'../templates/inject.html',controller:'alloyController',replace:false};});'use strict';console.log("OUTSIDE: alloy Service");//angular.module("main")
+function fadeOut(el){el.style.opacity=1;(function fade(){if((el.style.opacity-=.1)<0){el.style.display="none";}else{requestAnimationFrame(fade);}})();}// fade in
+function fadeIn(el,display){el.style.opacity=0;el.style.display=display||"block";(function fade(){var val=parseFloat(el.style.opacity);if(!((val+=.25)>1)){el.style.opacity=val;requestAnimationFrame(fade);}})();}// Get the modal
+var modal=document.getElementById('myModal');// Get the button that opens the modal
+var btn=document.getElementById("myBtn");// Get the <span> element that closes the modal
+var span=document.getElementsByClassName("close")[0];var ghost_btn=document.getElementsByClassName("ghost-btn")[0];// When the user clicks on the button, open the modal
+btn.onclick=function(){fadeIn(modal,"block");// modal.style.display = "block";
+// modal.className = "animated fadeIn";
+};// When the user clicks on <span> (x), close the modal
+span.onclick=function(){fadeOut(modal);// modal.style.display = "none";
+// modal.className = "animated fadeOut";
+};ghost_btn.onclick=function(){fadeOut(modal);// modal.style.display = "none";
+// modal.className = "animated fadeOut";
+};// When the user clicks anywhere outside of the modal, close it
+window.onclick=function(event){if(event.target==modal){modal.style.display="none";}};});'use strict';console.log("OUTSIDE: alloy Directive");angular.module("main").directive('inject',function(){console.log("INSIDE: alloy Directive");return{templateUrl:'../templates/inject.html',controller:'alloyController',replace:false};});'use strict';console.log("OUTSIDE: alloy Service");//angular.module("main")
 app.service('alloyService',function($http){console.log("INSIDE: alloy Service");this.getVotes=function(callback){$http({url:'/calexit',method:"GET"}).then(callback);};this.postVotes=function(params,callback){$http({url:'/calexit',method:"POST",data:params}).then(callback);};this.postQuestionOne=function(params,callback){$http({url:'/calexit-question-1',method:"POST",data:params}).then(callback);};this.delAllVotes=function(id,callback){console.log("success from delHomeBrew");$http({url:'/del-all/',method:"GET"}).then(callback);};this.getVoteCount=function(callback){$http({url:'/get-count',method:"GET"}).then(callback);};this.writeToDisk=function(query,callback){console.log("success from getHomeBrew");$http({url:'/write',method:"POST",data:query}).then(callback);};this.handShake=function(callback){$http({url:'http://ipinfo.io',method:"get"}).then(callback);};// DEPRECATED
 this.getVoteSplitCount=function(callback){$http({url:'/split-query',method:"POST"}).then(callback);};});

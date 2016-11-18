@@ -5,6 +5,10 @@
     display: flex;
 }
 
+.display-block {
+    display: block;
+}
+
 .flex-item-center {
     align-items: center;
     justify-content: center;
@@ -33,12 +37,7 @@
     align-items: center;
     margin: 0 auto;
     text-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-    word-wrap: break-word;
     font-weight: lighter;
-}
-
-.navWrapper {
-    padding: 20px 0px 100px;
 }
 
 .hamburger-menu {
@@ -48,6 +47,10 @@
     /*border: 1px solid #fff;*/
     padding: 3px;
     /*background-color: #fff;*/
+}
+
+.navWrapper {
+    padding: 20px 0px 250px;
 }
 
 
@@ -123,7 +126,7 @@
 }
 
 .robotoh5 {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: lighter;
 }
 
@@ -139,7 +142,48 @@
     padding: 20px 0px 100px;
 }
 
+.robotoh7 {
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+.full-page-container {
+    width: 100%;
+    height: 75vh;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+.jumbo_text {
+    font-size: 182px;
+    margin: 0px 0px 100px;
+    font-weight: lighter;
+}
+
+.stats_container {
+    .robotoh2 {
+        font-size: 50px;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .full-page-container {
+        width: 100%;
+        /*height: 85vh;*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        .jumbo_text {
+            font-size: 112px;
+        }
+        .robotoh4 {
+            font-size: 60px;
+        }
+    }
+    .poll_container {
+        margin: 50px 0px;
+    }
     .secretNavWrapper {
         padding: 0px;
     }
@@ -147,11 +191,6 @@
         font-size: 87px;
     }
     .robotoh1 span {
-        text-align: center;
-    }
-    .robotoh2 {
-        font-size: 50px;
-        display: block;
         text-align: center;
     }
     .poll-response .card {
@@ -165,6 +204,15 @@
         .robotoh5 {
             text-align: center;
         }
+        .robotoh2 {
+            font-size: 55px;
+            display: block;
+            text-align: center;
+        }
+        .robotoh1 {
+            text-align: center;
+            font-size: 45px;
+        }
     }
     .container {
         width: 80%;
@@ -177,7 +225,8 @@
 }
 
 
-/*@media screen and (max-height: 992px) and (min-width: 480px) {
+/*
+@media screen and (max-height: 992px) and (min-width: 480px) {
     .robotoh4 {
         font-size: 32px;
         text-align: center;
@@ -185,4 +234,13 @@
     .container {
         width: 80%;
     }
-}*/
+}
+*/
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.padding_0 {
+    padding: 0px;
+}
