@@ -1321,6 +1321,8 @@ h2 {
   text-align: center; }
 
 @media screen and (max-width: 768px) {
+  .navWrapper {
+    padding: 20px 0px 100px; }
   .full-page-container {
     width: 100%;
     /*height: 85vh;*/
