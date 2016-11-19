@@ -35,22 +35,27 @@
 }
 
 .card--graph {
-    /*/*width: 100%;*/
-    /*transition: all linear .25s;
-    padding: 50px;*/
+    /*
+    width: 100%;
+    transition: all linear .25s;
+    padding: 50px;
+    */
     box-shadow: 0 10px 10px rgba(0, 0, 0, .25);
     display: block;
     /*background: rgba(0, 107, 148, .05);*/
     border-radius: 0px;
-    /*border: 5px solid hsla(0, 0%, 100%, .5);
-    background-clip: padding-box;*/
+    /*
+    border: 5px solid hsla(0, 0%, 100%, .5);
+    background-clip: padding-box;
+    */
 }
 
 .card:hover {
     transition: all linear .25s;
     border: 1px solid rgba(255, 255, 255, .75);
     box-shadow: 0 7px 1px rgba(0, 0, 0, .25);
-    border: .75px solid hsla(0, 0%, 100%, .60);
+    border: 1px solid hsla(0, 0%, 100%, .60);
+    background-clip: padding-box;
 }
 
 .card-overlay {
@@ -221,7 +226,6 @@ canvas {
     }
 }
 
-
 .card {
     .btn.active,
     .btn.focus,
@@ -229,6 +233,6 @@ canvas {
     .btn:focus,
     .btn:hover,
     {
-        color: #fff ;
+        color: #fff;
     }
 }
