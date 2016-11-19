@@ -213,3 +213,22 @@ canvas {
     display: block;
     text-align: center;
 }
+
+.full-page-container {
+    a:focus,
+    a:hover {
+        color: #fff;
+    }
+}
+
+
+.card {
+    .btn.active,
+    .btn.focus,
+    .btn:active,
+    .btn:focus,
+    .btn:hover,
+    {
+        color: #fff ;
+    }
+}

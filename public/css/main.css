@@ -195,6 +195,7 @@ h2 {
   color: black; }
 
 .modal-content .ghost-botton {
+  font-weight: normal;
   border-color: black;
   color: black; }
 
@@ -206,7 +207,7 @@ h2 {
 .modal-content .btn.disabled,
 .modal-content .btn:disabled,
 .modal-content .btn[disabled] {
-  color: gray; }
+  color: #444; }
 
 .modal-fadeIn {
   position: relative;
@@ -1569,6 +1570,17 @@ canvas {
 .ghost-botton * {
   display: block;
   text-align: center; }
+
+.full-page-container a:focus,
+.full-page-container a:hover {
+  color: #fff; }
+
+.card .btn.active,
+.card .btn.focus,
+.card .btn:active,
+.card .btn:focus,
+.card .btn:hover {
+  color: #fff; }
 
 .callout {
   position: relative; }
