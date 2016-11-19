@@ -1237,42 +1237,48 @@ h2 {
 /*090909090909*/
 /*090909090909*/
 /*090909090909*/
-.navbar-toggle {
-  background: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  margin: 28px 6px 10px;
-  padding: 12px 14px;
-  border: 2px solid black;
-  color: #000; }
+/*.navbar-toggle {
+    background: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin: 28px 6px 10px;
+    padding: 12px 14px;
+    border: 2px solid black;
+    color: #000;
+}
 
 .btn-navbar:hover {
-  background-color: transparent;
-  background-image: none;
-  border-radius: 0;
-  border: 0 !important;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  padding-top: 23px; }
+    background-color: transparent;
+    background-image: none;
+    border-radius: 0;
+    border: 0 !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding-top: 23px;
+}
 
 .btn.btn-primary {
-  color: #fff; }
+    color: #fff;
+}
 
 .btn.btn-primary:focus {
-  color: #fff; }
+    color: #fff;
+}
 
-.open > .btn-primary.dropdown-toggle:focus,
-.open > .btn-primary.dropdown-toggle:hover {
-  color: #fff; }
+.open>.btn-primary.dropdown-toggle:focus,
+.open>.btn-primary.dropdown-toggle:hover {
+    color: #fff;
+}
 
 .bar {
-  fill: steelblue; }
+    fill: steelblue;
+}
 
 .axis path {
-  display: none; }
-
+    display: none;
+}*/
 .robotoh1 {
   font-size: 112px;
   font-weight: lighter; }
@@ -1408,7 +1414,8 @@ h2 {
   display: inline-block;
   flex-direction: column;
   background: rgba(0, 107, 148, 0.1);
-  background: rgba(0, 107, 148, 0.05);
+  /*background: rgba(0, 107, 148, .05);*/
+  /*background: rgba(0, 107, 148, .075);*/
   border-radius: 0px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.25);
