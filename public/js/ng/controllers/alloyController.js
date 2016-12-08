@@ -99,6 +99,9 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash, 
         if ($scope.selected[x] === undefined) {
           console.log("NOOO")
 
+          $scope.items[x].firstName = '';
+          $scope.items[x].lastName = '';
+          $scope.items[x].phoneNumber = '';
         } else {
           console.log($scope.selected[x].index);
           $scope.doItWatson = x;
@@ -111,9 +114,7 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash, 
       }
 
       var tempOBJ;
-      if (line.taken && $scope.doItWatson) {
-
-        $scope.doItWatson++;
+      if (line.taken) {
 
         tempOBJ = {
           time: line.time,
@@ -123,15 +124,9 @@ app.controller('alloyController', function($scope, $http, alloyService, lodash, 
           phoneNumber: $scope.selected.phoneNumber
         };
 
-
-        $scope.items[x].firstName = '';
-        $scope.items[x].lastName = '';
-        $scope.items[x].phoneNumber = '';
-
         $scope.items[$scope.doItWatson].firstName = $scope.selected.firstName;
         $scope.items[$scope.doItWatson].lastName = $scope.selected.lastName;
         $scope.items[$scope.doItWatson].phoneNumber = $scope.selected.phoneNumber;
-        $scope.items[$scope.doItWatson].falsy = false
 
         // console.log(tempOBJ);
         // console.log(x);
